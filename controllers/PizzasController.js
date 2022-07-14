@@ -39,7 +39,12 @@ class PizzasController{
         return res.json(type)
     }
     async getAll(req,res){
-        const types = await Pizzas.findAll()
+        const types = await Pizzas.findAll({
+            include:[
+                {model:Types,as:'types'},
+                {model:Sizes,as:'sizes'},
+        ]
+        })
         return res.json(types)
     }
     async getOne(req,res){

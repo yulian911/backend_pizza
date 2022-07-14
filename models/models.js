@@ -10,6 +10,13 @@ const {DataTypes} = require('sequelize')
     price: {type: DataTypes.INTEGER, allowNull: false},
     categoryId:{type: DataTypes.INTEGER,allowNull: false}
   })
+  const Users= sequelize.define('users',{
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    email:{type: DataTypes.STRING, allowNull: false,unique: true},
+    role:{type: DataTypes.STRING, allowNull: false},
+    password:{type: DataTypes.STRING, allowNull: false}
+   
+  })
   const PizzasInfo = sequelize.define('pizzas_info', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     title: {type: DataTypes.STRING, allowNull: false},
@@ -45,7 +52,8 @@ const {DataTypes} = require('sequelize')
     PizzasInfo,
     Types,
     Sizes,
-    Catygory
+    Catygory,
+    Users
   }
   
   
